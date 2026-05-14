@@ -1,8 +1,9 @@
 {
   "name": "s-m-s-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "RESTful Student Management System API built with Node.js and Express.js",
+  
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
