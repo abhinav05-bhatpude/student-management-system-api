@@ -1,12 +1,9 @@
-const express=require("express");
 
-const app=express();
 
-const PORT=5001;
+const app=require("./src/app");
 
-app.get("/",(req,res)=>{
-    res.send("Student Management ARunning");
-});
+const PORT=5000;
+
 app.listen(PORT,()=>{
-    console.log(`https://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`)
 })
