@@ -52,6 +52,28 @@ app.post("/students",(req,res)=>{
     });
 });
 
+app.put("/students/:id",(req,res)=>{
+
+    const studentId=Number(req.params.id);
+
+    const student = students.find
+    ((student) => student.id===studentId);
+
+    if(!student){
+        return res.status(404).json({
+            message:"Student not found";
+        });
+    }
+
+    student.name=req.body.name || student.name;
+    student.course=req.body.course || student.course;
+
+    res.json({
+        message:"Student updated succesfully",
+        student,
+    })
+})
+
 app.listen(PORT,()=>{
     console.log(`Server running on port ${PORT}`);
 });
