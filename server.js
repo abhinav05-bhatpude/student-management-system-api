@@ -20,8 +20,25 @@ app.get("/",(req,res)=>{
 app.get("/students",(req,res)=>{
     res.json(students);
 });
+app.get("/students/:id",(req,res)=>{
+
+    const studentId=Number(req.params.id);
+
+    const student=students.find(
+        (student)=> student.id === studentId
+    );
+    res.json(student);
+})
 
 app.post("/students",(req,res)=>{
+
+    const {name,course} = req.body;
+
+    if(!name || !course){
+        return res.status(400).json({
+            message:"Name and course are required",
+        });
+    }
     const newStudent={
         id: students.length + 1,
         ...req.body,
