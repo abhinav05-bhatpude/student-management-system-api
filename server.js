@@ -14,6 +14,11 @@ const students = [
     },
 ];
 
+app.use((req,res,next) => {
+    console.log(`${req.method} ${req.url}`);
+
+    next();
+});
 // Home Route
 app.get("/", (req, res) => {
     res.send("Server Running");
