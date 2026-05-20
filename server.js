@@ -38,7 +38,10 @@ app.get("/students",(req,res)=>{
     if(course){
         filteredStudents=filteredStudents.filter((student) => student.course.toLowerCase() === course.toLowerCase());
     }
-    res.json(filteredStudents);
+    res.json({
+        totalStudents:filteredStudents.length,
+        students:filteredStudents,
+    });
 })
 
 // Get Student By ID
@@ -56,7 +59,9 @@ app.get("/students/:id", (req, res) => {
         });
     }
 
-    res.json(student);
+    res.json({
+        student,
+    });
 });
 
 // Create Student
