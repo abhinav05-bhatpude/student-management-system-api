@@ -22,17 +22,18 @@ app.get("/", (req, res) => {
 // Get All Students
 app.get("/students",(req,res)=>{
 
-    const {name} =  req.query;
+    const {name,course} =  req.query;
 
     if(name){
 
         const filteredStudents=students.filter((student) => 
             student.name.toLowerCase().includes(name.toLowerCase())
-        );
-
-        return res.json(filteredStudents)
+        );    
     }
-    res.json(students);
+    if(course){
+        filteredStudents=filteredStudents.filter((student) => student.course.toLowerCase() === course.toLowerCase());
+    }
+    res.json(filteredStudents);
 })
 
 // Get Student By ID
