@@ -20,9 +20,20 @@ app.get("/", (req, res) => {
 });
 
 // Get All Students
-app.get("/students", (req, res) => {
+app.get("/students",(req,res)=>{
+
+    const {name} =  req.query;
+
+    if(name){
+
+        const filteredStudents=students.filter((student) => 
+            student.name.toLowerCase().includes(name.toLowerCase())
+        );
+
+        return res.json(filteredStudents)
+    }
     res.json(students);
-});
+})
 
 // Get Student By ID
 app.get("/students/:id", (req, res) => {
