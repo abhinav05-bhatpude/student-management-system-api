@@ -56,6 +56,7 @@ app.post("/students", (req, res) => {
 
     const newStudent = {
         id: students.length + 1,
+        createdAt:new Date(),
         ...req.body,
     };
 
